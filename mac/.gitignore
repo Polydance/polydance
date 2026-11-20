@@ -1,0 +1,7 @@
+# SwiftPM and Xcode state, and the assembled app (build.sh writes it under build/).
+.build/
+.swiftpm/
+build/
+*.xcodeproj/
+xcuserdata/
+DerivedData/

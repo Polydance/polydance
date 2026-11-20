@@ -1,0 +1,36 @@
+{
+  "name": "polydance-capture",
+  "version": "0.1.0",
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "description": "Pull headset screen recordings, transcribe them with timestamps, extract keyframes and bundle them for a coding agent.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0 <23"
+  },
+  "bin": {
+    "polycap": "bin/polycap.js"
+  },
+  "scripts": {
+    "polycap": "tsx src/cli.ts",
+    "app": "tsx app/tools/cli.ts",
+    "public": "tsx scripts/publish.ts",
+    "mac": "mac/build.sh",
+    "ios": "ios/build.sh",
+    "visionos": "visionos/build.sh",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm test"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "0.131.0",
+    "tsx": "4.23.13",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "26.5.1",
+    "typescript": "7.0.2",
+    "vite": "^8.3.0",
+    "vitest": "5.0.0"
+  }
+}

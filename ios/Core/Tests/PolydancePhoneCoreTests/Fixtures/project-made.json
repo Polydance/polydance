@@ -1,0 +1,25 @@
+{
+ "me": "iphone-probe",
+ "project": {
+  "hosts": [],
+  "key": "SPOT",
+  "mine": true,
+  "name": "Spottisphone",
+  "packages": []
+ },
+ "projects": [
+  {
+   "key": "CAP",
+   "name": "Polydance Capture"
+  },
+  {
+   "key": "MUS",
+   "name": "Marimba"
+  },
+  {
+   "key": "SPOT",
+   "mine": true,
+   "name": "Spottisphone"
+  }
+ ]
+}

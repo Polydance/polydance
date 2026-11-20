@@ -1,0 +1,27 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+coverage/
+
+# Private captures and work files never belong in the repository.
+.local/
+*.mp4
+*.webm
+*.mkv
+*.wav
+*.m4a
+
+# Polydance for iPhone: builds, the generated Xcode project and the core package's SwiftPM state.
+ios/build/
+ios/Polydance.xcodeproj/
+ios/Core/.build/
+ios/Core/.swiftpm/
+# Polydance for Vision Pro: builds and the generated Xcode project.
+visionos/build/
+visionos/Polydance.xcodeproj/
+
+# Vercel CLI links (project and team ids) for the homepage deploy, private/docs/SITE.md
+.vercel/

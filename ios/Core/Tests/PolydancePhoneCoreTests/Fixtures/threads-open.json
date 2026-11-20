@@ -1,0 +1,64 @@
+{
+ "me": "iphone-probe",
+ "projects": [
+  {
+   "key": "CAP",
+   "name": "Polydance Capture"
+  },
+  {
+   "key": "MUS",
+   "name": "Marimba"
+  }
+ ],
+ "reports": true,
+ "threads": [
+  {
+   "by": {
+    "as": "Opus 5.5",
+    "display": "Opus 5.5 on Robin's Mac",
+    "id": "agent",
+    "name": "Mac",
+    "user": {
+     "id": "robin",
+     "name": "Robin"
+    }
+   },
+   "createdAt": "2026-11-07T22:12:52.774Z",
+   "fresh": 0,
+   "key": "CAP-1",
+   "last": {
+    "at": "2026-11-07T22:12:53.221Z",
+    "by": {
+     "as": "Opus 5.5",
+     "display": "Opus 5.5 on Robin's Mac",
+     "id": "agent",
+     "name": "Mac",
+     "user": {
+      "id": "robin",
+      "name": "Robin"
+     }
+    },
+    "kind": "message",
+    "text": "Two options to try"
+   },
+   "lastMessageAt": "2026-11-07T22:12:53.221Z",
+   "messages": 2,
+   "people": [
+    {
+     "initial": "R",
+     "name": "Robin"
+    }
+   ],
+   "peopleCount": 1,
+   "project": "CAP",
+   "seq": 2,
+   "snippet": "Two options to try",
+   "state": "open",
+   "title": "The phone reads threads",
+   "unread": true,
+   "updatedAt": "2026-11-07T22:12:53.221Z",
+   "waiting": true
+  }
+ ],
+ "unread": 1
+}

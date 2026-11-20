@@ -1,0 +1,12 @@
+{
+  "systeminfo": "fixture",
+  "model": { "type": "large-v3-turbo" },
+  "params": { "model": "fixture", "language": "en", "translate": false },
+  "result": { "language": "en" },
+  "transcription": [
+    { "timestamps": { "from": "00:00:00,000", "to": "00:00:01,500" }, "offsets": { "from": 0, "to": 1500 }, "text": " Okay, this is the drum circle." },
+    { "timestamps": { "from": "00:00:01,500", "to": "00:00:03,200" }, "offsets": { "from": 1500, "to": 3200 }, "text": " There's a bug here, the stick goes through the drum." },
+    { "timestamps": { "from": "00:00:03,200", "to": "00:00:03,900" }, "offsets": { "from": 3200, "to": 3900 }, "text": " [BLANK_AUDIO]" },
+    { "timestamps": { "from": "00:00:03,900", "to": "00:00:05,400" }, "offsets": { "from": 3900, "to": 5400 }, "text": " It would be nice if the menu followed my head. Love this sound though." }
+  ]
+}

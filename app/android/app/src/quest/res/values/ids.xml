@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The immersive scene's panels (ImmersiveTableActivity): its keys, and a label under each piece on the table. -->
+    <item name="immersive_keys" type="id" />
+    <item name="immersive_label_0" type="id" />
+    <item name="immersive_label_1" type="id" />
+    <item name="immersive_label_2" type="id" />
+    <item name="immersive_label_3" type="id" />
+    <item name="immersive_label_4" type="id" />
+    <item name="immersive_label_5" type="id" />
+</resources>

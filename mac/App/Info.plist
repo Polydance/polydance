@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Polydance</string>
+	<key>CFBundleExecutable</key>
+	<string>Polydance</string>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
+	<key>CFBundleIdentifier</key>
+	<string>net.polydance.capture.mac</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Polydance</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.developer-tools</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>15.0</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Polydance asks Arc for the addresses of its tabs, only while Arc is using the microphone, to tell a Google Meet call from anything else. It reads nothing else and changes nothing in Arc.</string>
+	<key>NSAudioCaptureUsageDescription</key>
+	<string>Polydance records the sound of your Google Meet call in Arc (and, for a walkthrough, your Mac's sound) so the other people's words are in the transcript. Music and other apps are left out of calls. Recordings stay on this Mac.</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Polydance records your voice on its own track when it records a call or a walkthrough, so the transcript can tell your words from everyone else's. Recordings stay on this Mac.</string>
+	<key>PolydanceCommit</key>
+	<string>__POLYDANCE_COMMIT__</string>
+</dict>
+</plist>

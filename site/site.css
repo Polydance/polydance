@@ -1,0 +1,235 @@
+/* polydance.net: the page is the headset app's cabinet (mockup A, Robin's pick of 2026-11-10). Wood behind
+   everything, dark plates screwed to it, the deck as the hero and its lamps as the three steps. Every colour is a
+   token in design/tokens.json, which tests/design.test.ts checks; the type is the condensed sans the tokens name
+   for the site. docs/DESIGN-SYSTEM.md says what each part is. */
+:root {
+  --sans: "Avenir Next Condensed", "Roboto Condensed", "Arial Narrow", system-ui, sans-serif;
+  --mono: "Courier New", ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* Plain boards until cabinet.js paints the app's wood over them, and for good without JavaScript. */
+body {
+  margin: 0; font-family: var(--sans); font-stretch: condensed; color: #3A2C20; background-color: #E0C294;
+  background-image: repeating-linear-gradient(180deg, #E0C294 0 148px, #704C2C 148px 150px, #D2B07E 150px 298px, #704C2C 298px 300px);
+  background-repeat: repeat-y; background-position: center top;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+a:focus-visible { outline: 2px solid #F0A830; outline-offset: 3px; }
+.label { font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; }
+/* Nothing is printed straight on the wood (Robin, 2026-11-11: hard to read). Words go on a plate: a dark one, the
+   cream top plate's metal (.plate.cream, the hero), or a small plaque of it for a label. */
+.plaque {
+  display: inline-block; padding: 5px 10px 4px; border-radius: 2px; color: #3A2C20;
+  background: linear-gradient(#E6DDC5, #CDC2A6); border: 1px solid #968A6E; box-shadow: 0 1px 0 rgba(8, 7, 6, 0.35);
+}
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 12px; top: 12px; z-index: 10; background: #12100E; color: #EFE6D2; padding: 8px 12px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+/* A plate: dark, a 2 px edge, nearly square corners and a screw in each corner (tokens: shapes.plate). */
+.plate {
+  position: relative; background-color: #12100E; color: #EFE6D2; border: 2px solid #403931; border-radius: 2px;
+  box-shadow: 0 2px 0 rgba(8, 7, 6, 0.5), 0 14px 30px -12px rgba(8, 7, 6, 0.55);
+  background-image:
+    radial-gradient(circle at 11px 11px, #847C70 3.4px, #24201C 4.5px, transparent 5px),
+    radial-gradient(circle at calc(100% - 11px) 11px, #847C70 3.4px, #24201C 4.5px, transparent 5px),
+    radial-gradient(circle at 11px calc(100% - 11px), #847C70 3.4px, #24201C 4.5px, transparent 5px),
+    radial-gradient(circle at calc(100% - 11px) calc(100% - 11px), #847C70 3.4px, #24201C 4.5px, transparent 5px);
+}
+.plate.cream {
+  background-color: #E6DDC5; color: #3A2C20; border-color: #968A6E;
+  background-image:
+    radial-gradient(circle at 11px 11px, #847C70 3.4px, #24201C 4.5px, transparent 5px),
+    radial-gradient(circle at calc(100% - 11px) 11px, #847C70 3.4px, #24201C 4.5px, transparent 5px),
+    radial-gradient(circle at 11px calc(100% - 11px), #847C70 3.4px, #24201C 4.5px, transparent 5px),
+    radial-gradient(circle at calc(100% - 11px) calc(100% - 11px), #847C70 3.4px, #24201C 4.5px, transparent 5px),
+    linear-gradient(#E6DDC5, #CDC2A6);
+}
+.plate .kicker { color: #807666; font-size: 12px; margin: 0 0 14px; }
+
+header.top { margin-top: 18px; display: flex; align-items: center; gap: 18px; padding: 12px 28px; }
+.brand { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.brand img { width: 30px; height: 30px; }
+.brand span { font-size: 15px; letter-spacing: 0.24em; }
+header nav { margin-left: auto; display: flex; gap: 22px; font-size: 12px; }
+header nav a { color: #B8AD97; text-decoration: none; }
+header nav a:hover { color: #EFE6D2; }
+
+/* The text plate and the deck stand the same height (Robin, 2026-11-11): whichever is taller sets the row, and the
+   other's cream plate grows to it, the deck's with its reels kept in the middle. */
+.hero { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: stretch; padding: 64px 0 56px; }
+h1 { font-size: clamp(42px, 5.4vw, 64px); line-height: 0.98; letter-spacing: -0.01em; margin: 0 0 20px; color: #522C12; font-weight: 700; }
+.hero-text { padding: 40px 40px 34px; display: flex; flex-direction: column; justify-content: center; }
+.lede { font-size: 20px; line-height: 1.45; margin: 0 0 30px; max-width: 34em; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; }
+/* The deck's keys (tokens: type.label, keys 0.12 em), raised on a dark shadow and pressed in when used: red for the record key (tokens: parts.recordKeyReady,
+   recordKeyEdge, recordKeyPrint), dark for the others (casing to panel, the edge, cream print; Robin, 2026-11-11). */
+.key {
+  display: inline-flex; align-items: center; gap: 10px; padding: 14px 18px; border-radius: 10px; text-decoration: none; font-size: 14px;
+  letter-spacing: 0.12em; border: 1.5px solid; box-shadow: 0 3px 0 #080706, inset 0 1px 0 rgba(255, 244, 236, 0.3);
+}
+.key:active { transform: translateY(2px); box-shadow: 0 1px 0 #080706; }
+.key.rec { background: linear-gradient(#EC543C, #B02C1C); border-color: #46120A; color: #FFF4EC; }
+.key.rec::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #FFF4EC; }
+.key.dark { background: linear-gradient(#26221E, #12100E); border-color: #080706; color: #EFE6D2; box-shadow: 0 3px 0 #080706, inset 0 1px 0 rgba(239, 230, 210, 0.14); }
+.key.dark:hover { color: #FFF4EC; }
+.pill { display: inline-block; padding: 12px 18px; border-radius: 999px; text-decoration: none; background: #12100E; border: 1px solid #403931; color: #EFE6D2; font-size: 15px; }
+.pill:hover { border-color: #807666; }
+.note { flex-basis: 100%; font-size: 14px; color: #704C2C; margin: 0; }
+.hero-deck { filter: drop-shadow(0 22px 26px rgba(8, 7, 6, 0.45)); display: flex; flex-direction: column; }
+.hero-deck .deck { flex: none; display: block; }
+/* The deck's three parts: between the transport and the panel a strip of the transport's plate grows, so the deck
+   stands as tall as the words beside it. Its walnut cheeks are drawn stretched (only their height changes); the plate
+   and its brushed lines are CSS, over x 30 to 530 of the deck's 560, so the lines keep their spacing. */
+.deck-fill { flex: 1 1 auto; position: relative; margin: -1px 0;
+  background: repeating-linear-gradient(rgba(236, 232, 222, 0.35) 0 1px, transparent 1px 3px) 50% 0 / 89.286% 100% no-repeat,
+    linear-gradient(#CDC2A6, #CDC2A6) 50% 0 / 89.286% 100% no-repeat; }
+.deck-fill svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* The deck: reels turn while it records, the REC lamp blinks; cabinet.js runs the counter and the needles. */
+.deck { width: 100%; height: auto; font-family: var(--sans); }
+.deck .spin { animation: spin 5s linear infinite; }
+.deck .needle { transform-origin: 66px 64px; transform: rotate(-30deg); transition: transform 140ms ease-out; }
+.deck .blink { animation: blink 1.6s steps(1) infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes blink { 50% { opacity: 0.35; } }
+@media (prefers-reduced-motion: reduce) { .deck .spin, .deck .blink { animation: none; } }
+
+section { padding: 26px 0; }
+h2 { font-size: 12px; margin: 0 0 14px; }
+/* How it works as a story: the headset's picture and what you say, the deck, and the printer printing the storyboard
+   (story.js plays it). The columns keep their proportions down to the phone layout, so the deck's cable, drawn past
+   its right edge, always reaches into the printer. */
+.story { display: grid; grid-template-columns: 36fr 29fr 36fr; column-gap: 2.2%; align-items: end; margin: 6px 0 30px; }
+.story-headset { padding: 16px 16px 18px; }
+.story-headset .label { font-size: 11px; color: #EFE6D2; margin: 0 0 10px; }
+.story-screen { width: 100%; height: auto; border: 2px solid #403931; border-radius: 3px; }
+.story-said { list-style: none; margin: 18px 0 0; padding: 0; display: grid; justify-items: start; gap: 12px; }
+.bubble { position: relative; background: #EFE6D2; color: #3A2C20; border: 1px solid #968A6E; border-radius: 8px; padding: 8px 14px;
+  font-size: 15px; line-height: 1.35; box-shadow: 0 3px 8px rgba(8, 7, 6, 0.25); transition: opacity 400ms ease, transform 400ms ease; }
+.bubble::before { content: ""; position: absolute; left: 20px; top: -6px; width: 10px; height: 10px; background: #EFE6D2;
+  border-left: 1px solid #968A6E; border-top: 1px solid #968A6E; transform: rotate(45deg); }
+.story.playing .bubble:not(.said) { opacity: 0; transform: translateY(6px); }
+.story-deck, .story-printer { width: 100%; height: auto; filter: drop-shadow(0 14px 16px rgba(8, 7, 6, 0.4)); }
+.story-deck { overflow: visible; }
+.story:not(.recording) .spin { animation-play-state: paused; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.step { padding: 30px 28px 28px; }
+.lamp { display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 0.24em; margin-bottom: 16px; }
+.lamp i { width: 13px; height: 13px; border-radius: 50%; border: 1.5px solid #5A544C; }
+.lamp.rec i { background: #D93A2B; box-shadow: 0 0 12px #D93A2B; }
+.lamp.proc i { background: #54CCE8; box-shadow: 0 0 12px #54CCE8; }
+.lamp.ready i { background: #78BE6E; box-shadow: 0 0 12px #78BE6E; }
+.step h3 { font-size: 26px; margin: 0 0 8px; font-weight: 700; }
+.step p { margin: 0; color: #B8AD97; font-size: 17px; line-height: 1.5; }
+.aside { margin: 16px 0 0; padding: 10px 14px; font-size: 15px; line-height: 1.5; max-width: 52em; }
+
+/* Threads: two side by side, one you start and one your agent starts (Robin chose this, 2026-11-11). */
+.threads-both { padding: 36px; }
+.threads-both h3, .split h3 { font-size: 30px; margin: 0 0 10px; }
+.threads-both .intro, .split li { color: #B8AD97; font-size: 17px; line-height: 1.55; }
+.threads-both .intro { margin: 0 0 24px; max-width: 46em; }
+.ways { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+.way .dir { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid #403931; }
+.way .dir .arrow { color: #F0A830; font-size: 22px; line-height: 1; }
+.way .dir b { font-size: 13px; letter-spacing: 0.14em; }
+.thread { margin: 0; background: #1C1916; border: 1px solid #403931; border-radius: 4px; }
+.thread .title { padding: 12px 16px; border-bottom: 1px solid #403931; display: flex; gap: 10px; align-items: baseline; }
+.thread .title b { font-size: 12px; color: #807666; letter-spacing: 0.14em; }
+.msg { display: grid; grid-template-columns: 34px 1fr; gap: 12px; padding: 14px 16px; border-bottom: 1px solid #26221E; }
+.msg:last-child { border-bottom: 0; }
+/* People are circles and agents squares, in the avatar colours (tokens: avatars). */
+.av { width: 34px; height: 34px; display: grid; place-items: center; font-weight: 700; color: #ECE8DE; border-radius: 50%; }
+.av.agent { border-radius: 6px; }
+.av.a1 { background: #4084A0; } .av.a4 { background: #825AA0; }
+.who { font-size: 14px; } .who small { color: #807666; margin-left: 6px; }
+.msg p { margin: 4px 0 0; font-size: 15px; color: #EFE6D2; line-height: 1.45; }
+.rec-line { display: flex; align-items: center; gap: 8px; margin-top: 6px; color: #B8AD97; font-size: 14px; }
+.rec-line i { width: 8px; height: 8px; border-radius: 50%; background: #D93A2B; }
+.row-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; align-items: center; }
+.tag { display: inline-block; padding: 4px 8px; border-radius: 8px; background: #12100E; border: 1px solid #403931; font-size: 11px; white-space: nowrap; }
+.tag.try { color: #F0A830; } .tag.testing { color: #54CCE8; } .tag.ask { color: #B8AD97; } .tag.bug { color: #D93A2B; }
+.pill.small { padding: 7px 12px; font-size: 13px; }
+.pill.cream { background: #EFE6D2; color: #1C1916; border-color: #EFE6D2; }
+
+.where { padding: 30px 36px; }
+.where table { width: 100%; border-collapse: collapse; }
+.where th, .where td { padding: 14px 0; border-top: 1px solid #26221E; vertical-align: middle; text-align: left; font-size: 17px; color: #B8AD97; font-weight: 400; }
+.where tr:first-child th, .where tr:first-child td { border-top: 0; }
+.where th { color: #EFE6D2; width: 26%; font-size: 15px; font-weight: 700; }
+/* Each platform's device, drawn in line on a key (tokens: shapes.key). Pictures of the kind of device, not the
+   makers' logos, whose owners restrict their use (docs/SITE.md). */
+.where .platform { display: flex; align-items: center; gap: 14px; }
+.device { flex: none; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 10px; background: #1C1916; border: 1px solid #403931; color: #EFE6D2; }
+.device svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.device svg .dot { fill: currentColor; stroke: none; }
+.where td:last-child { text-align: right; width: 18%; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.split > div { padding: 32px; }
+.split ul { margin: 0; padding-left: 18px; } .split li { margin: 6px 0; }
+.split a { color: #EFE6D2; }
+footer { margin: 26px 0 48px; padding: 16px 28px; font-size: 14px; display: flex; gap: 10px 20px; flex-wrap: wrap; align-items: center; }
+footer a { color: #B8AD97; }
+footer img { width: 22px; height: 22px; }
+footer .link { font: inherit; color: #B8AD97; background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
+footer .link[hidden] { display: none; }
+
+/* Asking before Google Analytics counts a visit (analytics.js; Robin, 2026-11-12): a plate held at the foot of the
+   window until the visitor chooses, Allow and No thanks on the same dark key so neither is the easy one. */
+.consent { position: fixed; z-index: 20; left: 50%; bottom: 14px; transform: translateX(-50%); width: min(780px, calc(100% - 24px));
+  display: flex; align-items: center; flex-wrap: wrap; gap: 14px 24px; padding: 18px 26px; font-size: 15px; line-height: 1.45; }
+.consent[hidden] { display: none; }
+.consent p { flex: 1 1 340px; margin: 0; color: #B8AD97; }
+.consent b { display: block; margin-bottom: 4px; font-size: 12px; color: #EFE6D2; }
+.consent a { color: #EFE6D2; }
+.consent-keys { display: flex; gap: 12px; }
+.consent .key { padding: 11px 16px; font-size: 13px; font-family: var(--sans); cursor: pointer; }
+
+@media (max-width: 860px) {
+  header nav { display: none; }
+  .hero, .ways, .split, .join { grid-template-columns: 1fr; }
+  .hero { padding-top: 36px; gap: 28px; }
+  .steps { grid-template-columns: 1fr; }
+  .story { grid-template-columns: 1fr; row-gap: 26px; justify-items: center; }
+  .story-in { justify-self: stretch; }
+  .story-deck { max-width: 420px; }
+  .story-printer { max-width: 400px; }
+  .story-cable { display: none; }
+  .threads-both, .join { padding: 26px 22px; }
+  .where { padding: 22px; }
+  .where tr { display: grid; grid-template-columns: 1fr auto; }
+  .where th { width: auto; }
+  .where td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; padding-top: 0; border-top: 0; font-size: 15px; }
+  .where td:last-child { width: auto; }
+}
+
+/* The form asking to join (join.js, posted to the receiver's /join). Fields sit on the casing like the deck's keys. */
+.join { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 36px; padding: 36px; align-items: start; }
+.join h3 { font-size: 30px; margin: 0 0 10px; }
+.join-words p { color: #B8AD97; font-size: 17px; line-height: 1.55; margin: 0 0 12px; }
+.join .small, .join-form .small { font-size: 14px; color: #807666; }
+.join a { color: #EFE6D2; }
+.join-form { display: grid; gap: 8px; }
+.join-form label { font-size: 12px; color: #B8AD97; margin-top: 8px; }
+.join-form .optional { color: #807666; letter-spacing: 0.1em; margin-left: 6px; }
+.join-form input, .join-form select, .join-form textarea {
+  font: 17px var(--sans); font-stretch: condensed; color: #EFE6D2; background: #1C1916; border: 1px solid #403931; border-radius: 8px; padding: 11px 12px; width: 100%;
+}
+.join-form textarea { resize: vertical; min-height: 80px; }
+.join-form input:focus-visible, .join-form select:focus-visible, .join-form textarea:focus-visible { outline: 2px solid #F0A830; outline-offset: 1px; }
+.join-form input::placeholder { color: #807666; }
+.join-send { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
+.join-send button { cursor: pointer; font-family: var(--sans); }
+.join-send button:disabled { opacity: 0.6; cursor: progress; }
+.join-status { margin: 0; color: #B8AD97; font-size: 15px; }
+/* The field people never see; something that fills it in is not a person (join.ts). */
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+/* 404.html: what polydance.net answers for a path it does not have, old testing-space links included. */
+.notfound { max-width: 640px; margin: 72px 0 80px; padding: 36px; }
+.notfound h1 { color: #EFE6D2; font-size: clamp(30px, 4vw, 40px); margin: 0 0 12px; }
+.notfound p:not(.kicker) { color: #B8AD97; font-size: 17px; line-height: 1.55; margin: 0 0 22px; }
+.notfound .pill { font-size: 15px; padding: 10px 16px; }

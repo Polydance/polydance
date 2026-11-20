@@ -1,0 +1,114 @@
+# XcodeGen spec for Polydance on Apple Vision Pro (docs/VISIONOS.md): the Quest app's panel, its deck, inbox and
+# threads, in the look every platform shares, recording the whole view through a ReplayKit broadcast extension.
+# visionos/Polydance.xcodeproj is generated from this by `npm run visionos -- generate` (or any build) and
+# gitignored, so this file and the two Info.plists are the only project settings anyone edits.
+#
+# What it shares rather than copies, so a change made once reaches it:
+# - PolydanceShared (../mac): the look and the thread models, as the Mac and the iPhone use them.
+# - PolydancePhoneCore (../ios/Core): run folders, the movie writer, the upload protocol, pairing, thread requests.
+# - The iPhone app's own files that are not about a camera (listed under Polydance's sources): the receiver client,
+#   the background upload, the refresh, reply notices, the Keychain pairing, the provisioning reader, the pop-up.
+# - The headset app's logo and its 3D viewer page (app/android/.../assets/viewer), the same files the Quest serves.
+#
+# The version is the headsets' (versionName and versionCode in app/android/app/build.gradle.kts), which build.sh
+# passes as MARKETING_VERSION and CURRENT_PROJECT_VERSION, with POLYDANCE_COMMIT, so one release number names the
+# same build on Quest, Android XR and the Vision Pro. Signing is automatic with the team build.sh is given.
+name: Polydance
+options:
+  bundleIdPrefix: net.polydance.capture
+  deploymentTarget:
+    visionOS: "26.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: false
+packages:
+  PolydancePhoneCore:
+    path: ../ios/Core
+  PolydanceCapture:
+    path: ../mac
+targets:
+  Polydance:
+    type: application
+    platform: visionOS
+    deploymentTarget: "26.0"
+    sources:
+      - path: App/Sources
+      - path: Shared
+      - path: App/Resources
+      # The logo, the ballerina, from the headset app's own file rather than a copy (CLAUDE.md).
+      - path: ../app/android/app/src/main/res/drawable-nodpi/polydance_mark.png
+        buildPhase: resources
+      # The Quest's model viewer page and its decoders, served to the WKWebView by ModelViewer.swift.
+      - path: ../app/android/app/src/main/assets/viewer
+        type: folder
+        buildPhase: resources
+      # The iPhone app's files, used here unchanged.
+      - path: ../ios/App/Sources/ReceiverClient.swift
+      - path: ../ios/App/Sources/UploadProbe.swift
+      - path: ../ios/App/Sources/RefreshProbe.swift
+      - path: ../ios/App/Sources/ReplyNotifier.swift
+      - path: ../ios/App/Sources/PairingStore.swift
+      - path: ../ios/App/Sources/ProvisioningInfo.swift
+      - path: ../ios/App/Sources/PlateDialog.swift
+      - path: ../ios/App/Sources/ProjectList.swift
+    dependencies:
+      - package: PolydancePhoneCore
+        product: PolydancePhoneCore
+      - package: PolydanceCapture
+        product: PolydanceShared
+      - target: PolydanceBroadcast
+        embed: true
+        codeSign: true
+    settings:
+      base:
+        PRODUCT_NAME: Polydance
+        PRODUCT_BUNDLE_IDENTIFIER: net.polydance.capture.visionpro
+        INFOPLIST_FILE: App/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_ENTITLEMENTS: App/Polydance.entitlements
+        MARKETING_VERSION: 0.0.0
+        CURRENT_PROJECT_VERSION: 0
+        POLYDANCE_COMMIT: unknown
+        # Swift 5 mode, as the iPhone's app code and the Mac app are; the core packages are Swift 6 strict.
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "7"
+        CODE_SIGN_STYLE: Automatic
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ENABLE_USER_SCRIPT_SANDBOXING: YES
+        ENABLE_PREVIEWS: NO
+  PolydanceBroadcast:
+    type: app-extension
+    platform: visionOS
+    deploymentTarget: "26.0"
+    sources:
+      - path: Broadcast
+      - path: Shared
+    dependencies:
+      - package: PolydancePhoneCore
+        product: PolydancePhoneCore
+      - sdk: ReplayKit.framework
+    settings:
+      base:
+        PRODUCT_NAME: PolydanceBroadcast
+        PRODUCT_BUNDLE_IDENTIFIER: net.polydance.capture.visionpro.broadcast
+        INFOPLIST_FILE: Broadcast/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_ENTITLEMENTS: Broadcast/PolydanceBroadcast.entitlements
+        MARKETING_VERSION: 0.0.0
+        CURRENT_PROJECT_VERSION: 0
+        POLYDANCE_COMMIT: unknown
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "7"
+        CODE_SIGN_STYLE: Automatic
+        APPLICATION_EXTENSION_API_ONLY: YES
+        ENABLE_USER_SCRIPT_SANDBOXING: YES
+        SKIP_INSTALL: YES
+schemes:
+  Polydance:
+    build:
+      targets:
+        Polydance: all
+        PolydanceBroadcast: all
+    run:
+      config: Debug
+    archive:
+      config: Release

@@ -1,0 +1,17 @@
+{
+  "drawnBy": "design/icons.py",
+  "markSha256": "69fb51a18a2825ea042f211ddac8242028518e840f2993d3f812b7112772e72b",
+  "files": {
+    "mac/App/Resources/MenuBarDancer.png": "bcf2b817768ba2aa828c973bd1a779e1c22e78b64bf6f3c904acec9392ed4233",
+    "mac/App/Resources/MenuBarDancer@2x.png": "db4396695ef7feb65ba765a18eedd174a28f23bd504f5b1ebd3a535433deca79",
+    "mac/App/Resources/AppIcon.icns": "01c5f28463f968280694fa12dca3a59a64f5b2a1b335e6e074c1522bf6e189a8",
+    "ios/App/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon.png": "adc197c4342303e7958be2be2ee2af7640874938b0f95f02340a87dcc49504c8",
+    "visionos/App/Resources/Assets.xcassets/AppIcon.solidimagestack/Front.solidimagestacklayer/Content.imageset/Front.png": "34ff0aeba060a9faacc4ac95e4156066f90606dc8ffc84b8cd29b5a20538e909",
+    "visionos/App/Resources/Assets.xcassets/AppIcon.solidimagestack/Back.solidimagestacklayer/Content.imageset/Back.png": "56247071e5cfb789af06fd4b43b29404b84d678e2b156fa46d40a596349b1db9",
+    "app/android/app/src/main/res/drawable-nodpi/launcher_background.png": "5c5205a713899efd43a6f2a6e838b5006d05ce9ca2fe1b8ac93a80879d69b718",
+    "app/android/app/src/main/res/drawable-nodpi/launcher_foreground.png": "684e66bfbc969c31f31ea2a0f760d203833be41945c84e7ceeadae691b6bedaf",
+    "app/android/app/src/main/res/drawable-nodpi/launcher_monochrome.png": "42dcae4faab4ee4a4ad4035db91489a97b2dcfc86fc4307880d52bd4e5f9e2a3",
+    "site/assets/icon-512.png": "9f2eeb002ac49ef65cee3c3bd70842edeecdcc394838c38c0d71e93a14f3e0bb",
+    "site/assets/favicon.png": "b90a943f1e010c4e43ae10b1e782d90cf49131135fc64ac8562bb5e0650a2927"
+  }
+}

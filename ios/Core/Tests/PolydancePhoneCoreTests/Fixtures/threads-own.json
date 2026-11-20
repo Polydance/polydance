@@ -1,0 +1,22 @@
+{
+ "me": "iphone-probe",
+ "newProjects": true,
+ "projects": [
+  {
+   "key": "CAP",
+   "name": "Polydance Capture"
+  },
+  {
+   "key": "MUS",
+   "name": "Marimba"
+  },
+  {
+   "key": "SPOT",
+   "mine": true,
+   "name": "Spottisphone"
+  }
+ ],
+ "reports": true,
+ "threads": [],
+ "unread": 0
+}

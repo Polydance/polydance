@@ -1,0 +1,133 @@
+{
+  "me": "agent",
+  "key": "MUS-1",
+  "project": {
+    "key": "MUS",
+    "name": "Marimba"
+  },
+  "title": "Settings menu",
+  "state": "open",
+  "seq": 5,
+  "messages": [
+    {
+      "id": 1,
+      "at": "2026-11-05T14:06:09.136Z",
+      "by": {
+        "id": "agent",
+        "name": "Opus 5.5 on Robin's Mac",
+        "display": "Opus 5.5 on Robin's Mac"
+      },
+      "text": "Settings is buried under Profile. Two versions to compare.",
+      "reactions": [],
+      "picks": [],
+      "seq": 1
+    },
+    {
+      "id": 2,
+      "at": "2026-11-05T14:06:09.150Z",
+      "by": {
+        "id": "agent",
+        "name": "Opus 5.5 on Robin's Mac",
+        "display": "Opus 5.5 on Robin's Mac"
+      },
+      "text": "Moved Settings into the top bar, as discussed. Is it easier to find now?",
+      "launches": [
+        {
+          "label": "gear in the top bar",
+          "steps": [
+            {
+              "do": "open",
+              "url": "https://marimba-web-k2m7q9x4t-yourteam.vercel.app/?variant=a"
+            }
+          ]
+        },
+        {
+          "label": "Settings as a tab",
+          "steps": [
+            {
+              "do": "require",
+              "package": "com.example.marimba",
+              "versionCode": 231
+            },
+            {
+              "do": "open",
+              "url": "https://marimba-web-k2m7q9x4t-yourteam.vercel.app/?variant=b"
+            }
+          ]
+        },
+        {
+          "label": "On the headset",
+          "steps": [
+            {
+              "do": "app",
+              "package": "com.example.marimba",
+              "extras": {
+                "variant": "c"
+              }
+            }
+          ]
+        }
+      ],
+      "reactions": [],
+      "picks": [],
+      "seq": 2
+    },
+    {
+      "id": 3,
+      "at": "2026-11-05T14:06:09.577Z",
+      "by": {
+        "id": "mac-capture",
+        "name": "Robin · Mac",
+        "display": "Robin · Mac"
+      },
+      "recording": {
+        "uploadId": "up_7e1e4b342f9bce95",
+        "status": "ready",
+        "sessionId": "2026-11-05T14-02-10_mac",
+        "title": "Settings easier to find",
+        "summary": "The gear in the top bar is found at once.",
+        "durationMs": 20000,
+        "replyTo": {
+          "message": 2,
+          "launch": 0
+        },
+        "tried": [],
+        "clientId": "mac-polydance-mac-20261105-140210-7cb6154517835e0a",
+        "steps": {
+          "done": 8,
+          "total": 8
+        },
+        "canPlay": true
+      },
+      "reactions": [],
+      "picks": [],
+      "seq": 3
+    }
+  ],
+  "report": false,
+  "members": [],
+  "createdAt": "2026-11-05T14:06:09.136Z",
+  "updatedAt": "2026-11-05T14:06:10.285Z",
+  "by": {
+    "id": "agent",
+    "name": "Opus 5.5 on Robin's Mac",
+    "display": "Opus 5.5 on Robin's Mac"
+  },
+  "readSeq": 4,
+  "unread": true,
+  "waiting": false,
+  "member": true,
+  "canPlay": true,
+  "people": [
+    {
+      "name": "Opus 5.5 on Robin's Mac",
+      "initial": "O"
+    },
+    {
+      "name": "Robin · Mac",
+      "initial": "R"
+    }
+  ],
+  "participantCount": 0,
+  "participants": []
+}

@@ -1,0 +1,94 @@
+{
+  "me": "agent",
+  "key": "MUS-1",
+  "project": {
+    "key": "MUS",
+    "name": "Marimba"
+  },
+  "title": "Settings menu",
+  "state": "open",
+  "seq": 2,
+  "messages": [
+    {
+      "id": 1,
+      "at": "2026-11-07T17:48:13.307Z",
+      "by": {
+        "id": "agent",
+        "name": "Robin's Mac",
+        "display": "Opus 5.5 on Robin's Mac",
+        "user": {
+          "id": "robin",
+          "name": "Robin"
+        },
+        "as": "Opus 5.5"
+      },
+      "text": "Where is Settings now?",
+      "reactions": [],
+      "picks": [],
+      "seq": 1
+    },
+    {
+      "id": 2,
+      "at": "2026-11-07T17:48:13.919Z",
+      "by": {
+        "id": "iphone",
+        "name": "iPhone",
+        "display": "Robin · iPhone",
+        "user": {
+          "id": "robin",
+          "name": "Robin"
+        }
+      },
+      "text": "Still under Profile, here it is.",
+      "reactions": [],
+      "picks": [],
+      "photos": [
+        {
+          "sha256": "993686f137aa3b7dec9920fe17418fd27bfce22718121848146bf22c6934d9a3",
+          "type": "image/png",
+          "width": 1170,
+          "height": 2532,
+          "bytes": 16026,
+          "path": "/Users/test/PolydanceCapture/photos/MUS-1/993686f137aa3b7dec9920fe17418fd27bfce22718121848146bf22c6934d9a3.png"
+        },
+        {
+          "sha256": "dee734b7868c702484e6f89d8ea3a893797249396df1073711d7de11c1e4ef8c",
+          "type": "image/jpeg",
+          "width": 1600,
+          "height": 1200,
+          "bytes": 109880,
+          "path": "/Users/test/PolydanceCapture/photos/MUS-1/dee734b7868c702484e6f89d8ea3a893797249396df1073711d7de11c1e4ef8c.jpg"
+        }
+      ],
+      "canView": true,
+      "seq": 2
+    }
+  ],
+  "report": false,
+  "members": [],
+  "createdAt": "2026-11-07T17:48:13.306Z",
+  "updatedAt": "2026-11-07T17:48:13.919Z",
+  "by": {
+    "id": "agent",
+    "name": "Robin's Mac",
+    "user": {
+      "id": "robin",
+      "name": "Robin"
+    },
+    "as": "Opus 5.5",
+    "display": "Opus 5.5 on Robin's Mac"
+  },
+  "readSeq": 0,
+  "unread": true,
+  "waiting": false,
+  "member": true,
+  "canPlay": true,
+  "people": [
+    {
+      "name": "Robin",
+      "initial": "R"
+    }
+  ],
+  "participantCount": 0,
+  "participants": []
+}

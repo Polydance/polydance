@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "width": 160,
+  "frames": [
+    {
+      "file": "0001_00m01s.jpg",
+      "atMs": 1000,
+      "reason": "segment"
+    },
+    {
+      "file": "0002_00m03s.jpg",
+      "atMs": 3100,
+      "reason": "segment"
+    },
+    {
+      "file": "0003_00m05s.jpg",
+      "atMs": 5300,
+      "reason": "scene",
+      "full": "full/0003_00m05s.jpg"
+    },
+    {
+      "file": "0004_00m07s.jpg",
+      "atMs": 7800,
+      "reason": "mark",
+      "full": "full/0004_00m07s.jpg"
+    },
+    {
+      "file": "0005_00m10s.jpg",
+      "atMs": 10300,
+      "reason": "scene",
+      "full": "full/0005_00m10s.jpg"
+    },
+    {
+      "file": "0006_00m12s.jpg",
+      "atMs": 12800,
+      "reason": "mark",
+      "full": "full/0006_00m12s.jpg"
+    },
+    {
+      "file": "0007_00m15s.jpg",
+      "atMs": 15300,
+      "reason": "scene",
+      "full": "full/0007_00m15s.jpg"
+    },
+    {
+      "file": "0008_00m19s.jpg",
+      "atMs": 19500,
+      "reason": "edge"
+    }
+  ]
+}

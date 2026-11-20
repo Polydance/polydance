@@ -1,0 +1,84 @@
+{
+  "name": "Polydance",
+  "kind": "illustrated marketing artwork, not screenshots",
+  "assets": [
+    {
+      "file": "hero-cover-3000x900.png",
+      "width": 3000,
+      "height": 900,
+      "mode": "RGB",
+      "sha256": "530b86e80ddb833f0b915dea9b1be08a83147e237ea45aef1d24b59d4feec3f7"
+    },
+    {
+      "file": "cover-landscape-2560x1440.png",
+      "width": 2560,
+      "height": 1440,
+      "mode": "RGB",
+      "sha256": "af4b6bdc02133f438f044bf80efaf445869342060b308c282477719e629ddab4"
+    },
+    {
+      "file": "cover-square-1440x1440.png",
+      "width": 1440,
+      "height": 1440,
+      "mode": "RGB",
+      "sha256": "43d36ba2d347969012d8bf3df2e69c2df08f7f872adc1bd101ceacfce95bcb6d"
+    },
+    {
+      "file": "cover-portrait-1008x1440.png",
+      "width": 1008,
+      "height": 1440,
+      "mode": "RGB",
+      "sha256": "3c0cc67a5844aac23ff1b5dddb898333dd24ca76247a849477a996083ad14c82"
+    },
+    {
+      "file": "mini-landscape-1080x360.png",
+      "width": 1080,
+      "height": 360,
+      "mode": "RGB",
+      "sha256": "3ef5fd8dab49fe2aa83a0180d0a2bece98833c1e54499d628463e58bbfe0d684"
+    },
+    {
+      "file": "icon-512x512.png",
+      "width": 512,
+      "height": 512,
+      "mode": "RGB",
+      "sha256": "9f2eeb002ac49ef65cee3c3bd70842edeecdcc394838c38c0d71e93a14f3e0bb"
+    },
+    {
+      "file": "logo-transparent-3200x800.png",
+      "width": 3200,
+      "height": 800,
+      "mode": "RGBA",
+      "sha256": "3b9190636e6fa697adae571f4de9dcbd7e332835769ca8503c568f39cedd54ee"
+    },
+    {
+      "file": "spatial-background-512x512.png",
+      "width": 512,
+      "height": 512,
+      "mode": "RGB",
+      "sha256": "06160b55fcccc1582ef3f75838d3cbe37ac037f130f86f1cc87ce759fd2bf314"
+    },
+    {
+      "file": "spatial-foreground-512x512.png",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "sha256": "a3cea24e0dc9520f6fc130e29d6972b85f455d2d953612c7edc10bb9cc9a3c59"
+    },
+    {
+      "file": "spatial-background-180x180.png",
+      "width": 180,
+      "height": 180,
+      "mode": "RGB",
+      "sha256": "acd2aabf2b88c7977c1727a6e4c0918e17b58674090b0015e5a128ee28e19bd9"
+    },
+    {
+      "file": "spatial-foreground-180x180.png",
+      "width": 180,
+      "height": 180,
+      "mode": "RGBA",
+      "sha256": "3f4a76e05f080141fdbee2fa1377b3a930cdc3d638ee5a73eaefef36ffcabc10"
+    }
+  ],
+  "sourceMarkSha256": "69fb51a18a2825ea042f211ddac8242028518e840f2993d3f812b7112772e72b"
+}

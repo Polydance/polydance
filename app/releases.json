@@ -1,0 +1,354 @@
+{
+  "releases": [
+    {
+      "versionCode": 22,
+      "versionName": "0.15.4",
+      "commit": "f3c411ff4c518adc97521a178f111746b3ecfe8f",
+      "builtAt": "2026-10-16T15:21:03.324Z",
+      "artifacts": [
+        {
+          "platform": "quest",
+          "variant": "release",
+          "kind": "apk",
+          "file": "polydance-quest-release-0.15.4-22.apk",
+          "sha256": "7e0e4d4ac4b4d394a12c8e2237722133da17877125e4e22f55d37845a7440e9f"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "release",
+          "kind": "apk",
+          "file": "polydance-android-xr-release-0.15.4-22.apk",
+          "sha256": "b9aadc76393d35b89f2717604ab1816de5b79039d5988dc94e91fba66a9879b2"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "debug",
+          "kind": "apk",
+          "file": "polydance-android-xr-debug-0.15.4-22.apk",
+          "sha256": "08a9ba92064b77ccfd7dbb4c38898ad46d4c7474ddf71c7fc2e3368e994748a1"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "release",
+          "kind": "aab",
+          "file": "polydance-android-xr-release-0.15.4-22.aab",
+          "sha256": "0ba36d978e48702b7f5093dda1557dd971fb02286d18e8ea93a056eb82b73b67"
+        }
+      ],
+      "deliveries": []
+    },
+    {
+      "versionCode": 23,
+      "versionName": "0.16.0",
+      "commit": "d0d80ad5cfabec381d45670b6fb8fc27fca74935",
+      "builtAt": "2026-10-20T12:32:31.662Z",
+      "artifacts": [
+        {
+          "platform": "quest",
+          "variant": "release",
+          "kind": "apk",
+          "file": "polydance-quest-release-0.16.0-23.apk",
+          "sha256": "1717fedf30512b69f1a3253704113cfdf72c868596c59a5bdb3504d2a0560875"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "release",
+          "kind": "apk",
+          "file": "polydance-android-xr-release-0.16.0-23.apk",
+          "sha256": "eb8e90313756c9792b79bacb9f7bd2d46845c58e182e3cbb0d658453a707e971"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "debug",
+          "kind": "apk",
+          "file": "polydance-android-xr-debug-0.16.0-23.apk",
+          "sha256": "618976d4c9483dcca9564839a367257497a27f4f9f0e886f9e18b9e18676ae04"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "release",
+          "kind": "aab",
+          "file": "polydance-android-xr-release-0.16.0-23.aab",
+          "sha256": "887d689ad1592419e19db5f05c6eab6768850a1dbd6293e7ccbc0fe3d6960bea"
+        }
+      ],
+      "deliveries": [
+        {
+          "platform": "quest",
+          "to": "meta:ALPHA",
+          "at": "2026-10-20T12:36:17.857Z",
+          "ref": "1314893891718288"
+        }
+      ]
+    },
+    {
+      "versionCode": 24,
+      "versionName": "0.17.0",
+      "commit": "5defb57456fdc02ed7a9c718c8e16a9e7cd12793",
+      "builtAt": "2026-10-20T14:41:10.321Z",
+      "artifacts": [
+        {
+          "platform": "quest",
+          "variant": "release",
+          "kind": "apk",
+          "file": "polydance-quest-release-0.17.0-24.apk",
+          "sha256": "dd47f7764494b5a890cae636481e52c196e20f2ebae63fb6d47cd7a96c96802d"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "release",
+          "kind": "apk",
+          "file": "polydance-android-xr-release-0.17.0-24.apk",
+          "sha256": "bb9d2b25e590c7cf16dd9b9a374d53e589b2ac60b27963b0d1ea699c5b879493"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "debug",
+          "kind": "apk",
+          "file": "polydance-android-xr-debug-0.17.0-24.apk",
+          "sha256": "5c0b3f6f61e8864b7dacd1f198bf29cdf02414f6e44c857e51defec4a3176259"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "release",
+          "kind": "aab",
+          "file": "polydance-android-xr-release-0.17.0-24.aab",
+          "sha256": "e1ffc9f12212f6c19f8a70a2e41c8138c6b629895870f3a0906d78322383ad42"
+        }
+      ],
+      "deliveries": [
+        {
+          "platform": "quest",
+          "to": "meta:ALPHA",
+          "at": "2026-10-20T14:42:29.367Z",
+          "ref": "1315077628366581"
+        }
+      ]
+    },
+    {
+      "versionCode": 25,
+      "versionName": "0.18.0",
+      "commit": "a16c0256a3bedf0773119dce10a9b541cf1e5d66",
+      "builtAt": "2026-10-21T10:57:38.514Z",
+      "artifacts": [
+        {
+          "platform": "quest",
+          "variant": "release",
+          "kind": "apk",
+          "file": "polydance-quest-release-0.18.0-25.apk",
+          "sha256": "189716e0d51eee376c16364fcec7708a9ffaaf6281f2997153c6c88e46444ddb"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "release",
+          "kind": "apk",
+          "file": "polydance-android-xr-release-0.18.0-25.apk",
+          "sha256": "212ad531fe4fe78c5fe5a2631bf320b456f1a0b828cfac6c573fe52882ec8fcf"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "debug",
+          "kind": "apk",
+          "file": "polydance-android-xr-debug-0.18.0-25.apk",
+          "sha256": "49d2fa551d4b4f76c38d08f6a680af05395f23907b6535d755b22914fd3a8726"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "release",
+          "kind": "aab",
+          "file": "polydance-android-xr-release-0.18.0-25.aab",
+          "sha256": "95e2dc79b07e8a48d697e862e62dadda2920b7239b5dcf7aef2bd5c360b2b0b9"
+        }
+      ],
+      "deliveries": [
+        {
+          "platform": "quest",
+          "to": "meta:ALPHA",
+          "at": "2026-10-21T10:58:26.088Z",
+          "ref": "1316550254885985"
+        }
+      ]
+    },
+    {
+      "versionCode": 26,
+      "versionName": "0.19.0",
+      "commit": "1a048fc2d94873a2a87df1c1a616bd2053cfc724",
+      "builtAt": "2026-10-21T14:11:56.616Z",
+      "artifacts": [
+        {
+          "platform": "quest",
+          "variant": "release",
+          "kind": "apk",
+          "file": "polydance-quest-release-0.19.0-26.apk",
+          "sha256": "fabb0c402e1733655f63e65b11a1fb58ee41f06ca32e813d20282841c3d95260"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "release",
+          "kind": "apk",
+          "file": "polydance-android-xr-release-0.19.0-26.apk",
+          "sha256": "58a2b1e72567ab74b7ef2575aa7adc340c2349adf5393cf534e9c4ef79119b9c"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "debug",
+          "kind": "apk",
+          "file": "polydance-android-xr-debug-0.19.0-26.apk",
+          "sha256": "17a83ddaff00d110819f10417577513a4e3c68bfdae48d5fdb115b0f4bfb65db"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "release",
+          "kind": "aab",
+          "file": "polydance-android-xr-release-0.19.0-26.aab",
+          "sha256": "8803d1f226d32ba205a5c1a74682b8dcc6c38391dae640b9ffa59835670c0a15"
+        }
+      ],
+      "deliveries": [
+        {
+          "platform": "quest",
+          "to": "meta:ALPHA",
+          "at": "2026-10-21T14:12:49.098Z",
+          "ref": "1316815394859471"
+        },
+        {
+          "platform": "android-xr",
+          "to": "adb:Android XR Puck",
+          "at": "2026-10-29T22:57:25.381Z"
+        }
+      ]
+    },
+    {
+      "versionCode": 27,
+      "versionName": "0.20.0",
+      "commit": "9ad11cd3817e68e7aad90fa98448e1618c65b1e5",
+      "builtAt": "2026-11-07T22:31:53.184Z",
+      "artifacts": [
+        {
+          "platform": "quest",
+          "variant": "release",
+          "kind": "apk",
+          "file": "polydance-quest-release-0.20.0-27.apk",
+          "sha256": "4a9427dd2aa887bc6e25bc415d737ee8fd3c35af0ebd5916ee4f0db37699e8d9"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "release",
+          "kind": "apk",
+          "file": "polydance-android-xr-release-0.20.0-27.apk",
+          "sha256": "5cece6f9d49ae744044dcf6cf0e8c460a13597afa9697ba9a3c95323069c1ed3"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "debug",
+          "kind": "apk",
+          "file": "polydance-android-xr-debug-0.20.0-27.apk",
+          "sha256": "897575b5cf1da78b5ba32c31e33b2fefcebc636091b4885e439b6ccdc5146ce1"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "release",
+          "kind": "aab",
+          "file": "polydance-android-xr-release-0.20.0-27.aab",
+          "sha256": "2970f2d41cd75ad552b986371a8c5ae98ac63ee7694d82e84373a37f69bc1447"
+        }
+      ],
+      "deliveries": [
+        {
+          "platform": "quest",
+          "to": "meta:ALPHA",
+          "at": "2026-11-07T22:32:58.554Z",
+          "ref": "1356717157535961"
+        }
+      ]
+    },
+    {
+      "versionCode": 28,
+      "versionName": "0.21.0",
+      "commit": "a8e3c7dca41aa693b04e1c1d5e640b08ad849c28",
+      "builtAt": "2026-11-12T12:20:42.417Z",
+      "artifacts": [
+        {
+          "platform": "quest",
+          "variant": "release",
+          "kind": "apk",
+          "file": "polydance-quest-release-0.21.0-28.apk",
+          "sha256": "a5d713d4f2492f6153ccd36ee26b9e3b8e194d60f4e0aa8eab0b49623ee777d6"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "release",
+          "kind": "apk",
+          "file": "polydance-android-xr-release-0.21.0-28.apk",
+          "sha256": "cc6153a8c3acdecf6b2ad788c27126b600955b58d4918d3d5f8dd79a726236b2"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "debug",
+          "kind": "apk",
+          "file": "polydance-android-xr-debug-0.21.0-28.apk",
+          "sha256": "ac9323399d1e9f5bf4edbb6032db66a0a965fa41f97fcf58f1f9f6635c59b93d"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "release",
+          "kind": "aab",
+          "file": "polydance-android-xr-release-0.21.0-28.aab",
+          "sha256": "7b8475e6f75f0ebd6439f7053eb0552e471e0afc73e7bfc350a33376c4546c77"
+        }
+      ],
+      "deliveries": [
+        {
+          "platform": "quest",
+          "to": "meta:ALPHA",
+          "at": "2026-11-12T12:21:46.241Z",
+          "ref": "1365629559978054"
+        }
+      ]
+    },
+    {
+      "versionCode": 29,
+      "versionName": "0.22.0",
+      "commit": "96adacbea3b950100bef0a576cae80a9119221fb",
+      "builtAt": "2026-11-19T22:31:04.341Z",
+      "artifacts": [
+        {
+          "platform": "quest",
+          "variant": "release",
+          "kind": "apk",
+          "file": "polydance-quest-release-0.22.0-29.apk",
+          "sha256": "acb7dd89274004f1c7af1e8b4eba274a6b004f4b86366d4daf70c20174631bae"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "release",
+          "kind": "apk",
+          "file": "polydance-android-xr-release-0.22.0-29.apk",
+          "sha256": "a8eb51498f99ed46d4b9153c13d552da7dc2f263e76816fd8f3a67ed242b4fed"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "debug",
+          "kind": "apk",
+          "file": "polydance-android-xr-debug-0.22.0-29.apk",
+          "sha256": "582bd24e81735882f58c98f68ea5727303846dffdd316a7e6378ea44c0de5206"
+        },
+        {
+          "platform": "android-xr",
+          "variant": "release",
+          "kind": "aab",
+          "file": "polydance-android-xr-release-0.22.0-29.aab",
+          "sha256": "2f7860a9ee432395f97f8c3c1797e950c95a965b527d174b9a2d9126d4566b8e"
+        }
+      ],
+      "deliveries": [
+        {
+          "platform": "quest",
+          "to": "meta:ALPHA",
+          "at": "2026-11-19T22:32:19.682Z",
+          "ref": "1380571095150567"
+        }
+      ]
+    }
+  ]
+}

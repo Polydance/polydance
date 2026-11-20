@@ -1,0 +1,87 @@
+# An nginx site for a receiver, as capture.polydance.net runs it (since 2026-10-01). Change the server_name to yours.
+# capture.polydance.net has its own Route 53 A record (the *.polydance.net wildcard was removed 2026-11-11).
+# The homepage's form asking to join: 10 requests a minute from one address (location = /join, 2026-11-11).
+# limit_req_zone sits outside the server blocks, in the http context the site is included in.
+# Certificates come through an ACME webroot:
+#   certbot certonly --webroot -w /var/www/polydance-acme -d capture.polydance.net
+# Install the port-80 block first, get the certificate, then add the 443 block; nginx -t before reloads.
+limit_req_zone $binary_remote_addr zone=polydance_join:1m rate=10r/m;
+
+server {
+    listen 80;
+    server_name capture.polydance.net;
+    access_log off;
+    error_log /var/log/nginx/polydance-capture-error.log crit;
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/www/polydance-acme;
+        default_type text/plain;
+        try_files $uri =404;
+    }
+    location / { return 301 https://$host$request_uri; }
+}
+server {
+    listen 443 ssl;
+    server_name capture.polydance.net;
+    ssl_certificate /etc/letsencrypt/live/capture.polydance.net/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/capture.polydance.net/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    access_log off;
+    error_log /var/log/nginx/polydance-capture-error.log crit;
+    server_tokens off;
+    # Uploads arrive in 8 MB chunks and stream straight to the receiver.
+    client_max_body_size 64m;
+    client_body_timeout 60s;
+    client_header_timeout 10s;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "no-referrer" always;
+    location /v1/ {
+        limit_except GET POST PUT DELETE { deny all; }
+        proxy_pass http://127.0.0.1:8790;
+        proxy_http_version 1.1;
+        proxy_set_header Host capture.polydance.net;
+        proxy_set_header Connection "";
+        proxy_request_buffering off;
+        proxy_buffering off;
+        proxy_connect_timeout 5s;
+        proxy_read_timeout 300s;
+        proxy_send_timeout 300s;
+    }
+    # The privacy notice the app and its store listing link to (since the store build, 2026-10-08).
+    location = /privacy {
+        limit_except GET { deny all; }
+        proxy_pass http://127.0.0.1:8790;
+        proxy_http_version 1.1;
+        proxy_set_header Host capture.polydance.net;
+        proxy_set_header Connection "";
+    }
+    # The pages an email's links open: confirming an address, and stopping email to one (2026-11-10).
+    location ^~ /email/ {
+        limit_except GET POST { deny all; }
+        client_max_body_size 4k;
+        proxy_pass http://127.0.0.1:8790;
+        proxy_http_version 1.1;
+        proxy_set_header Host capture.polydance.net;
+        proxy_set_header Connection "";
+    }
+    # The homepage's form asking to join the trial (2026-11-11): rate-limited here and in the receiver.
+    location = /join {
+        limit_except GET POST { deny all; }
+        client_max_body_size 4k;
+        limit_req zone=polydance_join burst=5 nodelay;
+        limit_req_status 429;
+        proxy_pass http://127.0.0.1:8790;
+        proxy_http_version 1.1;
+        proxy_set_header Host capture.polydance.net;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Connection "";
+    }
+    # The getting-started page to send someone new; their Welcome thread opens it (2026-11-10).
+    location = /start {
+        limit_except GET { deny all; }
+        proxy_pass http://127.0.0.1:8790;
+        proxy_http_version 1.1;
+        proxy_set_header Host capture.polydance.net;
+        proxy_set_header Connection "";
+    }
+    location / { return 404; }
+}

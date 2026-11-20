@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- Compatible 2D Home Space app, not an immersive/OpenXR app. Pointer/gesture interaction does
+         not require a touchscreen or hand-tracking permission. No speculative XR feature gates. -->
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <!-- Credential Manager declares these for passkeys; Google ID sign-in (GoogleSignIn) never asks for a fingerprint. -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" tools:node="remove" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" tools:node="remove" />
+    <!-- Google Play, which opens Polydance's page for the inbox's Update key when it installed this copy. -->
+    <queries>
+        <package android:name="com.android.vending" />
+    </queries>
+</manifest>

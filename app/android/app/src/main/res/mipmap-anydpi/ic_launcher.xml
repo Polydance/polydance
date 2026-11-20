@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The launcher icon, the Mac's dock icon in Android's shape (Robin, 2026-11-11): design/icons.py draws the three
+     108 dp layers, and each launcher cuts its own outline from them. The monochrome layer is the themed icon. -->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/launcher_background" />
+    <foreground android:drawable="@drawable/launcher_foreground" />
+    <monochrome android:drawable="@drawable/launcher_monochrome" />
+</adaptive-icon>

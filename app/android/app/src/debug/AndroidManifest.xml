@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- Debug builds only. App switches (AppSwitches) read the usage log, which needs this permission;
+         Meta's store refuses any build that declares it (prohibited permissions, private/docs/STORE.md). The user
+         grants Usage access in Settings from the button behind the gear. -->
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" tools:ignore="ProtectedPermissions" />
+    <!-- Logs in a take (DeviceLogs, docs/LOGS.md): other apps' log lines, read once when a take stops. A development
+         permission: only `adb shell pm grant` gives it (the app tools' logs command), and Android 13+ still asks each time the
+         log is read, only while Polydance is on top. Debug builds only, as above: Meta's prohibited permissions include
+         READ_LOGS (app/tools/store.ts), so a store build declaring it fails upload. Without it a take keeps Polydance's
+         own lines. -->
+    <uses-permission android:name="android.permission.READ_LOGS" tools:ignore="ProtectedPermissions" />
+</manifest>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:horizonos="http://schemas.horizonos/sdk">
+    <!-- Hybrid apps need Horizon OS v69: the deck shown over the immersive scene (cooperative mode). MediaProjection
+         already needed v68 (docs/IMMERSIVE-VIEWER-RESEARCH.md). -->
+    <horizonos:uses-horizonos-sdk horizonos:minSdkVersion="69" horizonos:targetSdkVersion="69" />
+    <!-- Quest spatial-data experiment; never requested or packaged in the Android XR build. -->
+    <uses-permission android:name="com.oculus.permission.USE_SCENE" />
+    <!-- The immersive scene (ImmersiveTableActivity, Meta Spatial SDK): passthrough, and hands as well as controllers.
+         Head tracking is declared not required, as for a panel app: Polydance stays a 2D app in Meta's store, with one
+         immersive activity it opens on request (docs/IMMERSIVE-VIEWER-RESEARCH.md). -->
+    <uses-feature android:name="android.hardware.vr.headtracking" android:required="false" />
+    <uses-feature android:name="com.oculus.feature.PASSTHROUGH" android:required="false" />
+    <uses-feature android:name="oculus.software.handtracking" android:required="false" />
+    <!-- The Spatial SDK renders with Vulkan. Meta's upload refuses a VR activity without a Vulkan or GLES version
+         (2026-10-21); Quest 3 and 3S have Vulkan 1.1. -->
+    <uses-feature android:name="android.hardware.vulkan.version" android:version="0x00401000" android:required="true" />
+    <uses-permission android:name="com.oculus.permission.HAND_TRACKING" />
+    <queries>
+        <package android:name="com.oculus.browser" />
+        <!-- Horizon OS's shell, which opens Polydance's store page for the inbox's Update key (CAP-6 #3). -->
+        <package android:name="com.oculus.vrshell" />
+    </queries>
+    <application>
+        <!-- supportedDevices and excludeFromRecents are Meta's store requirements for a release build
+             (private/docs/STORE.md); without them an upload fails VRC.Quest.Packaging.1. Elsewhere they would name
+             Oculus hardware and hide the app from recents, so they stay in this flavor.
+             Recorded and checked on Quest 3 only; MediaProjection needs Horizon OS v68+, which Quest 3S also has. -->
+        <meta-data android:name="com.oculus.supportedDevices" android:value="quest3|quest3s" />
+        <activity android:name=".MainActivity" android:exported="true" android:excludeFromRecents="true">
+            <!-- A panel activity, so Horizon OS shows it over the immersive scene when the scene starts it (cooperative
+                 mode) rather than taking it for an immersive one. -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.oculus.intent.category.2D" />
+            </intent-filter>
+        </activity>
+        <meta-data android:name="com.oculus.handtracking.version" android:value="V2.0" />
+        <!-- Horizon OS's own library, which the Spatial SDK loads; present on every Quest this app supports. -->
+        <uses-native-library android:name="libossdk.oculus.so" android:required="false" />
+        <!-- The immersive scene: a VR activity in its own task, opened only by a model's Immersive key. focusaware lets
+             the system menu and the deck's panel open over it without pausing the scene. -->
+        <activity
+            android:name=".ImmersiveTableActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:taskAffinity="${applicationId}.immersive"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:configChanges="screenSize|screenLayout|orientation|keyboardHidden|keyboard|navigation|uiMode|density|smallestScreenSize">
+            <meta-data android:name="com.oculus.vr.focusaware" android:value="true" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.oculus.intent.category.VR" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

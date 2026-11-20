@@ -1,0 +1,4 @@
+{
+ "error": "SPOT is taken; choose another key, or leave it out and one is made from the name",
+ "reason": "key_taken"
+}

@@ -1,0 +1,39 @@
+Polydance is licensed in two parts. The full texts are in LICENSES/.
+
+Copyright 2026 Robin Spottiswoode
+
+1. The receiver, polycap and the pipeline they share: GNU Affero General Public
+   License, version 3 or (at your option) any later version
+   (SPDX: AGPL-3.0-or-later, LICENSES/AGPL-3.0-or-later.txt).
+
+     src/  bin/  scripts/  tests/  deploy/
+     and the files at the repository's root that build and test them
+     (package.json, package-lock.json, tsconfig.json, vitest.config.ts)
+
+   Running polycap or a receiver yourself is unaffected. If you change the
+   receiver and let other people use it over a network, offer them your
+   changed source, as section 13 of the licence says.
+
+2. The apps, the skill, the look and the bundle format: Apache License,
+   version 2.0 (SPDX: Apache-2.0, LICENSES/Apache-2.0.txt).
+
+     app/        the headset app for Quest and Android XR, and its tools
+     visionos/   the headset app for Apple Vision Pro
+     mac/        the Mac app
+     ios/        the iPhone app
+     skill/      what a coding agent reads to load a recording
+     design/     the colours, type and drawing scripts every platform shares
+
+   The bundle format (the folder a recording becomes: session.json,
+   transcript.json, frames.json and the files beside them) may be read and
+   written by anything, under any licence.
+
+   The apps reach polycap over HTTP or by running it as a separate program,
+   so the two licences do not combine into one work.
+
+Not licensed yet: docs/, site/, store-assets/, .claude/ and .github/ are all
+rights reserved until private/docs/BUSINESS.md says otherwise. private/ is never published.
+
+The name Polydance and the ballerina mark are not licensed by either licence;
+see TRADEMARKS.md. Third-party code the apps bundle keeps its own licence,
+listed in each app's notices.

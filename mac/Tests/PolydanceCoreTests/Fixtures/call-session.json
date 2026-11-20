@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "id": "2026-11-05T11-00-02_meet",
+  "title": "Deck by Friday",
+  "createdAt": "2026-11-05T14:06:07.414Z",
+  "recordedAt": "2026-11-05T11:00:02.120Z",
+  "recordedAtSource": "meta",
+  "source": {
+    "kind": "import",
+    "originalName": "polydance-mac-20261105-110002.mp4",
+    "originalPath": "/Users/someone/PolydanceCapture/mac/recordings/polydance-mac-20261105-110002.mp4",
+    "appPackage": "net.polydance.capture.mac",
+    "bytes": 515309,
+    "sha256": "65c43e6c334d16ea55b29b9c24f7dbe3dfdbd267657bc8ff594108e33f7fa3c1",
+    "appBuild": {
+      "versionName": "0.1.0",
+      "versionCode": 1,
+      "commit": "904e7b9"
+    },
+    "audioTracks": [
+      "mic",
+      "app"
+    ],
+    "call": {
+      "app": "meet",
+      "browser": "arc",
+      "meetingCode": "abc-defg-hij",
+      "startedAt": "2026-11-05T11:00:02.120Z",
+      "endedAt": "2026-11-05T11:00:22.120Z",
+      "stopReason": "left-call",
+      "video": "recorded",
+      "farEnd": "heard",
+      "short": false,
+      "cut": false,
+      "told": "unknown",
+      "display": {
+        "width": 1920,
+        "height": 1243
+      },
+      "excludedApps": [
+        "com.apple.MobileSMS",
+        "com.apple.mail",
+        "com.apple.Passwords"
+      ]
+    },
+    "marks": [
+      {
+        "atMs": 7800
+      },
+      {
+        "atMs": 12800,
+        "note": "flag this"
+      }
+    ]
+  },
+  "media": {
+    "video": "video.mp4",
+    "durationMs": 20000,
+    "width": 320,
+    "height": 200,
+    "hasAudio": true,
+    "container": "mov",
+    "hasVideo": true,
+    "audioChannels": [
+      1,
+      2
+    ],
+    "voice": "both"
+  },
+  "steps": {
+    "probe": {
+      "status": "done",
+      "at": "2026-11-05T14:06:07.516Z"
+    },
+    "audio": {
+      "status": "done",
+      "at": "2026-11-05T14:06:07.661Z",
+      "note": "track 1, the microphone (Me), and track 2, the call's sound (Others), each transcribed"
+    },
+    "transcribe": {
+      "status": "done",
+      "at": "2026-11-05T14:06:07.884Z",
+      "note": "4 segments from the microphone and 3 from the call's sound, as 6 lines; 1 microphone line dropped as the far end heard through the speakers"
+    },
+    "frames": {
+      "status": "done",
+      "at": "2026-11-05T14:06:08.974Z",
+      "note": "8 frames (5 also full size), from transcript, 3 at scene changes, 2 at marks"
+    },
+    "pointing": {
+      "status": "skipped",
+      "at": "2026-11-05T14:06:08.984Z",
+      "note": "POLYCAP_POINTING is none"
+    },
+    "markers": {
+      "status": "done",
+      "at": "2026-11-05T14:06:08.998Z",
+      "note": "3 markers (2 from marks); spoken cues from Me's lines only"
+    },
+    "summary": {
+      "status": "done",
+      "at": "2026-11-05T14:06:09.034Z",
+      "note": "claude-haiku-4-5; 0 requests"
+    },
+    "storyboard": {
+      "status": "done",
+      "at": "2026-11-05T14:06:09.045Z",
+      "note": "6 lines, 8 frames, 0 requests"
+    }
+  },
+  "summary": {
+    "title": "Deck by Friday",
+    "text": "Agrees the deck goes out by Friday.",
+    "model": "claude-haiku-4-5"
+  },
+  "transcriber": {
+    "kind": "whisper-cpp",
+    "model": "/Users/someone/PolydanceCapture/models/ggml-large-v3-turbo.bin",
+    "language": "en"
+  },
+  "frameCount": 8,
+  "markerCount": 3,
+  "tool": {
+    "name": "polydance-capture",
+    "version": "0.1.0"
+  }
+}

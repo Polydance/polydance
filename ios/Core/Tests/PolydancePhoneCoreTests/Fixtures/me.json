@@ -1,0 +1,10 @@
+{
+ "device": "iPhone probe",
+ "me": "iphone-probe",
+ "person": {
+  "emailVerified": false,
+  "id": "robin",
+  "initial": "R",
+  "name": "Robin"
+ }
+}

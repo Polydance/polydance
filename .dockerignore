@@ -1,0 +1,8 @@
+# The receiver image needs package files, bin, src and skill only. Never recordings or settings.
+*
+!package.json
+!package-lock.json
+!.npmrc
+!bin/**
+!src/**
+!skill/**

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "recordedAt": "2026-11-05T11:00:02.120Z",
+  "appPackage": "net.polydance.capture.mac",
+  "appBuild": { "versionName": "0.1.0", "versionCode": 1, "commit": "904e7b9" },
+  "audioTracks": ["mic", "app"],
+  "marks": [{ "atMs": 252000 }, { "atMs": 595500, "note": "flag this" }],
+  "call": {
+    "app": "meet",
+    "browser": "arc",
+    "meetingCode": "abc-defg-hij",
+    "startedAt": "2026-11-05T11:00:02.120Z",
+    "endedAt": "2026-11-05T11:52:15.480Z",
+    "stopReason": "left-call",
+    "video": "recorded",
+    "farEnd": "heard",
+    "short": false,
+    "cut": false,
+    "told": "unknown",
+    "display": { "width": 1920, "height": 1243 },
+    "excludedApps": ["com.apple.MobileSMS", "com.apple.mail", "com.apple.Passwords"],
+    "videoGaps": [{ "fromMs": 1111000, "toMs": 1114500, "reason": "Stream was stopped by the system" }]
+  }
+}

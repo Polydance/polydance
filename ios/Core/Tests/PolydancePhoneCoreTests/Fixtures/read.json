@@ -1,0 +1,132 @@
+{
+ "by": {
+  "as": "Opus 5.5",
+  "display": "Opus 5.5 on Robin's Mac",
+  "id": "agent",
+  "name": "Mac",
+  "user": {
+   "id": "robin",
+   "name": "Robin"
+  }
+ },
+ "canPlay": true,
+ "createdAt": "2026-11-07T22:12:52.774Z",
+ "key": "CAP-1",
+ "me": "iphone-probe",
+ "member": true,
+ "messages": [
+  {
+   "at": "2026-11-07T22:12:52.774Z",
+   "by": {
+    "as": "Opus 5.5",
+    "display": "Opus 5.5 on Robin's Mac",
+    "id": "agent",
+    "name": "Mac",
+    "user": {
+     "id": "robin",
+     "name": "Robin"
+    }
+   },
+   "id": 1,
+   "launches": [
+    {
+     "steps": [
+      {
+       "do": "open",
+       "url": "https://example.com/"
+      }
+     ]
+    }
+   ],
+   "picks": [],
+   "reactions": [],
+   "seq": 1,
+   "text": "First message from the agent. Open the link and reply with the camera."
+  },
+  {
+   "at": "2026-11-07T22:12:53.221Z",
+   "by": {
+    "as": "Opus 5.5",
+    "display": "Opus 5.5 on Robin's Mac",
+    "id": "agent",
+    "name": "Mac",
+    "user": {
+     "id": "robin",
+     "name": "Robin"
+    }
+   },
+   "id": 2,
+   "launches": [
+    {
+     "label": "Plain",
+     "steps": [
+      {
+       "do": "open",
+       "url": "https://example.com/plain"
+      }
+     ]
+    },
+    {
+     "label": "Fancy",
+     "steps": [
+      {
+       "do": "open",
+       "url": "https://example.com/fancy"
+      }
+     ]
+    }
+   ],
+   "picks": [
+    {
+     "at": "2026-11-07T22:13:10.000Z",
+     "by": {
+      "display": "Robin · iPhone probe",
+      "id": "iphone-probe",
+      "name": "iPhone probe",
+      "user": {
+       "id": "robin",
+       "name": "Robin"
+      }
+     },
+     "launch": 1
+    }
+   ],
+   "reactions": [
+    {
+     "at": "2026-11-07T22:13:09.983Z",
+     "by": {
+      "display": "Robin · iPhone probe",
+      "id": "iphone-probe",
+      "name": "iPhone probe",
+      "user": {
+       "id": "robin",
+       "name": "Robin"
+      }
+     },
+     "reaction": "thumbs-up"
+    }
+   ],
+   "seq": 2,
+   "text": "Two options to try"
+  }
+ ],
+ "participantCount": 0,
+ "participants": [],
+ "people": [
+  {
+   "initial": "R",
+   "name": "Robin"
+  }
+ ],
+ "project": {
+  "key": "CAP",
+  "name": "Polydance Capture"
+ },
+ "readSeq": 4,
+ "seq": 4,
+ "state": "open",
+ "title": "The phone reads threads",
+ "unread": false,
+ "updatedAt": "2026-11-07T22:13:10.000Z",
+ "waiting": true
+}

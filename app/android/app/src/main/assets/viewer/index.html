@@ -1,0 +1,28 @@
+<!doctype html>
+<!--
+  The 3D viewer's page (ModelView, in a thread's message): Google's <model-viewer> showing one model the inbox opened.
+  Everything comes from the app itself; ModelView answers every request and refuses anything that is
+  not this folder or the model, so nothing here reaches the network. viewer.js reports progress to the
+  app through the page title and takes the panel's keys through window.polydance.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' blob: 'wasm-unsafe-eval'; worker-src 'self' blob:; img-src 'self' blob: data:; connect-src 'self' blob: data:; style-src 'self' 'unsafe-inline'">
+  <title>loading</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #1c1916; overflow: hidden; }
+    model-viewer { width: 100%; height: 100%; background: radial-gradient(circle at 50% 40%, #3a332c 0%, #1c1916 70%); --poster-color: transparent; }
+    model-viewer::part(default-progress-bar) { background-color: #f0a830; height: 3px; }
+  </style>
+  <script src="config.js"></script>
+  <script type="module" src="model-viewer.min.js"></script>
+  <script type="module" src="viewer.js"></script>
+</head>
+<body>
+  <model-viewer id="model" loading="eager" camera-controls touch-action="none" interaction-prompt="none" auto-rotate-delay="0" autoplay
+    shadow-intensity="1" exposure="1" environment-image="neutral" camera-orbit="30deg 75deg 105%"
+    alt="The model sent with this message"></model-viewer>
+</body>
+</html>

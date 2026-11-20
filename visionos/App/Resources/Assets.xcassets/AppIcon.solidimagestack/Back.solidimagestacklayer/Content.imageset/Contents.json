@@ -1,0 +1,13 @@
+{
+  "images": [
+    {
+      "filename": "Back.png",
+      "idiom": "vision",
+      "scale": "2x"
+    }
+  ],
+  "info": {
+    "author": "design/icons.py",
+    "version": 1
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "engine": "whisper-cpp",
+  "model": "/Users/someone/PolydanceCapture/models/ggml-large-v3-turbo.bin",
+  "language": "en",
+  "voice": "both",
+  "bleedDropped": 1,
+  "segments": [
+    {
+      "startMs": 0,
+      "endMs": 2000,
+      "text": "Okay, can everyone see my screen?",
+      "speaker": "me"
+    },
+    {
+      "startMs": 2500,
+      "endMs": 3700,
+      "text": "Yes, I can see it now.",
+      "speaker": "others"
+    },
+    {
+      "startMs": 6000,
+      "endMs": 8500,
+      "text": "Action item for me: send the deck by Friday.",
+      "speaker": "me"
+    },
+    {
+      "startMs": 11000,
+      "endMs": 13000,
+      "text": "Let's flag this for the board.",
+      "speaker": "others"
+    },
+    {
+      "startMs": 16000,
+      "endMs": 18000,
+      "text": "Thanks, talk soon.",
+      "speaker": "me"
+    },
+    {
+      "startMs": 16100,
+      "endMs": 17500,
+      "text": "Yes, thanks.",
+      "speaker": "others"
+    }
+  ]
+}

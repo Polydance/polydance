@@ -1,0 +1,19 @@
+{
+ "capabilities": [
+  "idempotent-replies-v1",
+  "reports-v1",
+  "models-v1",
+  "photos-v1"
+ ],
+ "me": "iphone-probe",
+ "projects": [
+  {
+   "key": "CAP",
+   "name": "Polydance Capture"
+  },
+  {
+   "key": "MUS",
+   "name": "Marimba"
+  }
+ ]
+}

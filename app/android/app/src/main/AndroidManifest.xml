@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:installLocation="auto">
+    <!-- installLocation is one of Meta's store requirements (private/docs/STORE.md) and harmless elsewhere; the
+         Quest-only ones, excludeFromRecents and supportedDevices, are in src/quest. -->
+
+    <!-- The recording runs in a foreground service; Android requires a typed service for a
+         projection, and a microphone type for the mic to stay live while the app is in the background. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Uploads to the hosted receiver. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Which app was in front during a recording (AppSwitches) needs PACKAGE_USAGE_STATS, which Meta's
+         store refuses outright, so it is declared in src/debug only. The query makes other launchable apps
+         visible, for their names and versions, and for launches that open an app. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <uses-feature android:name="android.hardware.microphone" android:required="false" />
+
+    <application
+        android:name=".CaptureApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Polydance"
+        android:usesCleartextTraffic="${cleartext}"
+        android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
+
+        <!-- singleTask so the adb START and STOP intents reach the running screen instead of a copy. -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:resizeableActivity="true"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|density|uiMode">
+            <!-- One widescreen panel (2026-10-20): the deck, the threads and the open thread side by side. 16:10 like
+                 Meta's 1024 x 640 dp default, at the 1440 dp width Meta allows at most, so three columns fit; Meta's
+                 minimum is 384 x 500 dp, and below 820 dp of inbox the open thread takes the list's place. Without
+                 this element Horizon OS gave the app a 400 x 640 dp window. -->
+            <layout
+                android:defaultWidth="1440dp"
+                android:defaultHeight="900dp"
+                android:minWidth="720dp"
+                android:minHeight="500dp" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- The player (2026-10-12): opened from a recording in a thread, over the panel, in its task. -->
+        <activity
+            android:name=".PlayerActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|density|uiMode" />
+
+        <service
+            android:name=".RecorderService"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection|microphone" />
+    </application>
+</manifest>

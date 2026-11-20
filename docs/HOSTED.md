@@ -49,9 +49,10 @@ records it as `source.kind: "upload"` with the upload and client ids.
 thread's launch opens in the headset ([THREADS.md](THREADS.md#the-welcome)). It says, in the order a tester
 meets them: what Polydance is; getting set up on Quest (send the Meta account's address to whoever invited
 you, accept Meta's invitation, install from the Library, open the app); the first two minutes in the Welcome;
-how threads work; tips for a good recording; their own coding agent (`#your-agent`: since 2026-11-20 the five
-steps of [connecting one themselves](THREADS.md#connecting-your-own-agent), not yet deployed, with the sentence
-that `polycap` comes with the source code, which is not public); and privacy, linking `/privacy`. It names no host and reads nothing from the request, so any receiver
+how threads work; tips for a good recording; their own coding agent (`#your-agent`: since 2026-11-20 the five steps of
+[connecting one themselves](THREADS.md#connecting-your-own-agent), live since 12:03 UTC that day. That deployment's
+page says `polycap` comes with source code that is not public yet; the source went public the same day, at
+github.com/Polydance/polydance, and the page says so from the receiver's next deployment); and privacy, linking `/privacy`. It names no host and reads nothing from the request, so any receiver
 serves it as it is; its contact is `POLYCAP_PRIVACY_CONTACT`. It has the privacy notice's look, checked against
 `design/tokens.json` by `tests/design.test.ts`. nginx needs `location = /start`, as in the
 [example](../deploy/receiver/nginx-site.conf.example). The steps for Meta's invitation and the Library are
@@ -280,9 +281,13 @@ Thread-scoped behaviour itself has not been exercised on the live receiver.
 ### Agents people connect themselves
 
 Built 2026-11-20 at Robin's "Yes, build it", on `main` since that day; verified by `npm run check`
-alone (`tests/agents.test.ts`); **not deployed**, and no released headset app asks for a code yet: the one that
-does is built on the same branch ([THREADS.md](THREADS.md#connecting-your-own-agent) has the design, the headsets'
-side and what was and was not exercised).
+(`tests/agents.test.ts`). **Live on capture.polydance.net since 2026-11-20 12:03 UTC**, at Robin's "Yes, deploy"
+(image `polycap-receiver:566dc84`, main's tip). No released headset app asks for a code yet: the one that does is
+on `main`, in no release ([THREADS.md](THREADS.md#connecting-your-own-agent) has the design, the headsets' side
+and what was and was not exercised). Checked after the swap: health 200; the start-up line counts `0 connected
+agent(s)`; `GET /v1/threads` says `agents: true` and `GET /v1/projects` lists `projects-edit-v1` and `agents-v1`
+with the Mac's token; a wrong code is the 404 `no_code`; asking for a code without a token is a 401; `/start` has
+the new steps. **Not exercised live:** a code asked for, redeemed or disconnected, and a project's hosts changed.
 
 - **What it is.** Someone with a device token (`upload`: a Meta or Google sign-in, or a headset or phone token
   from the table above) asks `POST /v1/agents/codes` for a one-time code, and `polycap connect CODE` on their
@@ -298,10 +303,15 @@ side and what was and was not exercised).
   remove one agent yourself: stop the receiver, take its entry out of `agents.json`, start it.
 - **On only with threads.** Without `POLYCAP_PROJECTS` the routes answer 404 and `agents-v1` is not advertised.
 - **Behind nginx.** The limit on tries is per sender, read from `X-Real-IP` when the request comes from this
-  machine, as `/join` does; `deploy/receiver/nginx-site.conf.example` sets it for every route. Without it every
-  request looks like one sender, and ten tries in ten minutes is the limit for everyone together.
+  machine, as `/join` does. nginx has to set that header for `POST /v1/agents` itself, as
+  `deploy/receiver/nginx-site.conf.example` does in `location = /v1/agents` (with a pace limit of its own), since
+  a header nginx does not write is passed on as the sender wrote it. **capture.polydance.net's site does not have
+  that block yet** (seen 2026-11-20: only `/join` sets the header). Until it does, the per-sender limit there is
+  not one: either everyone is one sender and shares ten tries in ten minutes, or a sender names itself, and the
+  limit that holds is the overall one, 60 tries in ten minutes, which is the one the guessing sum in THREADS.md
+  uses. Guessing is no easier for it; a burst of wrong tries can hold everyone's pairing up for ten minutes.
 - **Before deploying.** No id in the live `POLYCAP_SERVER_TOKENS` may start `paired-`: the new receiver refuses
-  one at start-up (recreate.py then puts the old container back). The same deploy brings `POST
+  one at start-up (recreate.py then puts the old container back). On 2026-11-20 the live settings had none. The same deploy brings `POST
   /v1/projects/:key`, which lets a project's owner change its hosts and packages, and the new words on `/start`
   and in the Welcome's follow-up, which tell a newcomer to press Connect your agent or open Agents. Those are in
   no released app (0.22.0 has neither), so the page says they need a newer Polydance. Deploying the receiver first

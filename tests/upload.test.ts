@@ -6,7 +6,7 @@
  * scope). The tokens live in a temporary settings folder, never the user's.
  */
 import { copyFile, mkdtemp, readFile, writeFile, mkdir } from 'node:fs/promises';
-import { tmpdir } from 'node:os';
+import { tmpdir, type } from 'node:os';
 import { join } from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { exportCommand } from '../src/commands/export.js';
@@ -102,7 +102,7 @@ describeWithFfmpeg('polycap upload: a walkthrough from the Mac as a thread reply
     const manifest = await loadSession(join(server.config.sessions, done.sessionId));
     expect(manifest.source).toMatchObject({
       kind: 'upload', uploadId: result.uploadId, clientId: result.clientId, sha256: await sha256File(file), appPackage: 'net.polydance.capture.mac',
-      appBuild: { versionName: '0.1.0', versionCode: 1, commit: '904e7b9' }, audioTracks: ['mic', 'app'], deviceModel: 'Mac',
+      appBuild: { versionName: '0.1.0', versionCode: 1, commit: '904e7b9' }, audioTracks: ['mic', 'app'], deviceModel: process.platform === 'darwin' ? 'Mac' : type(),
       thread: { key: 'MUS-1', replyTo: { message: 1, launch: { label: 'Red' } } },
     });
     expect(manifest.recordedAt).toBe('2026-11-05T11:00:02.120Z');

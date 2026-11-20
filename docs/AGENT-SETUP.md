@@ -4,10 +4,9 @@ For someone who records with Polydance (on a headset, a Mac or an iPhone) and wo
 such as Claude Code. It is written so the agent can follow it: give your agent this file and say
 "Set yourself up for Polydance with AGENT-SETUP.md", then check its work with step 5.
 
-Status (2026-11-20): written ahead of the public repository, as BUSINESS.md decided on 2026-11-10;
-until then the getting-started page asks newcomers to write to the team, and this is how the team's own
-agents are set up. Step 2's `polycap connect` and the headset's Connect your agent are built and tested but
-not on the hosted receiver or in a released app yet. Verification is at the end.
+Status (2026-11-20): the repository is public since today, at github.com/Polydance/polydance, and this is
+also how the team's own agents are set up. Step 2's `polycap connect` is on the hosted receiver since 2026-11-20; the headset's
+Connect your agent is built and tested but in no released app yet. Verification is at the end.
 
 ## What your agent can reach
 

@@ -3,14 +3,18 @@
  * repository is public", item 8). `check` scans every tracked file outside `private/` against the deny-list in
  * `private/publish-deny.json` and the secret shapes in publish-rules.ts, and says what would leak. `snapshot`
  * refuses unless the tree is clean and the check finds nothing, then copies those files into a new folder as one
- * commit of a new history. Nothing here pushes: sending the snapshot to github.com/Polydance/polydance is its own
- * step, taken with Robin's go.
+ * commit of a new history: that made the first public commit (2026-11-20). `update` is every one since: in a clean
+ * clone of the public repository it makes the files match this repository's (adding, changing and removing) and
+ * commits on top, so the public history only grows. Nothing here pushes: sending a commit to
+ * github.com/Polydance/polydance is its own step, taken with Robin's go. Set GIT_AUTHOR_EMAIL and GIT_COMMITTER_EMAIL
+ * to a no-reply address so no personal one reaches a public commit.
  *
  *   npx tsx scripts/publish.ts check [--lines]
  *   npx tsx scripts/publish.ts snapshot --out DIR
+ *   npx tsx scripts/publish.ts update --repo CLONE
  */
 import { execFile } from 'node:child_process';
-import { chmod, copyFile, mkdir, readdir, readFile } from 'node:fs/promises';
+import { chmod, copyFile, mkdir, readdir, readFile, rm } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { parseArgs, promisify } from 'node:util';
 import { denyListSchema, privateLinks, publishable, scanFile, summarise, type DenyRule, type Finding } from './publish-rules.js';
@@ -91,8 +95,35 @@ async function snapshot(out: string): Promise<number> {
   return 0;
 }
 
+/** The public files written into a clone of the public repository, and committed on top of its history. */
+async function update(repo: string): Promise<number> {
+  if ((await git(['status', '--porcelain', '--untracked-files=normal'])).trim()) throw new Error('commit everything first: an update comes from a clean tree');
+  const dir = resolve(repo);
+  const inside = await git(['rev-parse', '--show-toplevel'], dir).catch(() => { throw new Error(`${dir} is not a git repository`); });
+  if (resolve(inside.trim()) === ROOT) throw new Error('--repo is this repository; give a clone of the public one');
+  if ((await git(['status', '--porcelain', '--untracked-files=normal'], dir)).trim()) throw new Error(`${dir} has uncommitted changes`);
+  const { files, findings } = await scan();
+  if (findings.length) { report(findings, files.length, false); console.log('\nNo update: fix the above, or move the files under private/.'); return 3; }
+  const keep = new Set(files.map(f => f.path));
+  for (const old of (await git(['ls-files', '-z'], dir)).split('\0').filter(Boolean)) {
+    if (!keep.has(old)) await rm(join(dir, old), { force: true });
+  }
+  for (const f of files) {
+    await mkdir(dirname(join(dir, f.path)), { recursive: true });
+    await copyFile(join(ROOT, f.path), join(dir, f.path));
+    await chmod(join(dir, f.path), f.mode === '100755' ? 0o755 : 0o644);
+  }
+  await git(['add', '-A'], dir);
+  const changed = (await git(['status', '--porcelain'], dir)).trim().split('\n').filter(Boolean);
+  if (!changed.length) { console.log('The public repository already matches; nothing to commit.'); return 0; }
+  const head = (await git(['rev-parse', '--short', 'HEAD'])).trim();
+  await git(['commit', '-q', '-m', `Polydance, from the private repository's ${head}`], dir);
+  console.log(`${changed.length} file(s) changed in ${dir}, committed on top of its history from ${head}. Nothing was pushed.`);
+  return 0;
+}
+
 async function main(): Promise<number> {
-  const { values, positionals } = parseArgs({ allowPositionals: true, options: { lines: { type: 'boolean' }, out: { type: 'string' } } });
+  const { values, positionals } = parseArgs({ allowPositionals: true, options: { lines: { type: 'boolean' }, out: { type: 'string' }, repo: { type: 'string' } } });
   const command = positionals[0] ?? 'check';
   if (command === 'check') {
     const { files, findings } = await scan();
@@ -103,7 +134,11 @@ async function main(): Promise<number> {
     if (!values.out) throw new Error('snapshot needs --out DIR');
     return snapshot(values.out);
   }
-  throw new Error(`unknown command ${command}: check or snapshot`);
+  if (command === 'update') {
+    if (!values.repo) throw new Error('update needs --repo CLONE, a clean clone of the public repository');
+    return update(values.repo);
+  }
+  throw new Error(`unknown command ${command}: check, snapshot or update`);
 }
 
 main().then(code => process.exit(code), (error: Error) => { console.error(error.message); process.exit(2); });

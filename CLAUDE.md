@@ -70,7 +70,8 @@ memory is keyed by project folder, so they live here as text.
   six builds behind Quest because store builds had shipped from a branch for five days
   ([docs/RELEASING.md](docs/RELEASING.md)).
 - **Git is the agent's job.** Commit with clear messages as work lands; do not hand commit or push
-  steps to Robin. There is no remote yet; creating one is Robin's call.
+  steps to Robin. This repository has no remote. Its public copy, github.com/Polydance/polydance (since
+  2026-11-20), is written only by `npm run public` and only at Robin's go; never push this repository there.
 - **The headset app is two codebases, kept as one (Robin, 2026-11-12).** Quest and Android XR run `app/android`;
   the Vision Pro runs the same app in Swift, `visionos/` ([docs/VISIONOS.md](docs/VISIONOS.md)). A change to what the
   headset app does (the deck, the inbox, threads, launches, recording, uploads, words a person reads) is made in
@@ -91,7 +92,7 @@ npm run check                     # typecheck + tests
 npm run polycap -- <command>       # run the CLI without linking
 npm run app -- build | wifi | install | configure | pull | analyze   # --platform quest|android-xr, see app/PLATFORMS.md
 npm run app -- release | status | upload --platform quest           # one release for every headset, docs/RELEASING.md
-npm run public -- check [--lines] | snapshot --out DIR              # what would leak into the public repository, private/docs/BUSINESS.md
+npm run public -- check [--lines] | update --repo CLONE             # what would leak, and the next public commit in a clone of github.com/Polydance/polydance
 polycap serve | sync | token new   # hosted receiver, see docs/HOSTED.md
 polycap link | project list | thread list | show | new | reply | react | close | add | remove | invite | uninvite | watch | welcome   # threads, docs/THREADS.md
 polycap me [--email A]             # a token's own address, confirmed by an emailed link (docs/THREADS.md, Invited by email)

@@ -6,6 +6,8 @@
 #   certbot certonly --webroot -w /var/www/polydance-acme -d capture.polydance.net
 # Install the port-80 block first, get the certificate, then add the 443 block; nginx -t before reloads.
 limit_req_zone $binary_remote_addr zone=polydance_join:1m rate=10r/m;
+# Redeeming a code to connect an agent (location = /v1/agents, 2026-11-20): the same pace, counted apart.
+limit_req_zone $binary_remote_addr zone=polydance_agents:1m rate=10r/m;
 
 server {
     listen 80;
@@ -34,6 +36,22 @@ server {
     client_header_timeout 10s;
     add_header X-Content-Type-Options "nosniff" always;
     add_header Referrer-Policy "no-referrer" always;
+    # Redeeming a code for an agent's token takes no token (docs/THREADS.md, Connecting your own agent, 2026-11-20),
+    # so the receiver limits tries by sender: this passes the sender's address, written here and never taken from
+    # the request, and limits the pace as /join's does. Written 2026-11-20; not yet in capture.polydance.net's own
+    # site, where every request to /v1/ looks like one sender and the receiver's limit of ten tries in ten minutes
+    # is shared by everyone.
+    location = /v1/agents {
+        limit_except POST { deny all; }
+        client_max_body_size 4k;
+        limit_req zone=polydance_agents burst=5 nodelay;
+        limit_req_status 429;
+        proxy_pass http://127.0.0.1:8790;
+        proxy_http_version 1.1;
+        proxy_set_header Host capture.polydance.net;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Connection "";
+    }
     location /v1/ {
         limit_except GET POST PUT DELETE { deny all; }
         proxy_pass http://127.0.0.1:8790;

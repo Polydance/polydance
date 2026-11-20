@@ -688,9 +688,11 @@ Designed on 2026-11-20 and agreed by Robin the same day ("Yes, build it", with t
 receiver and `polycap` are verified by `npm run check` alone (38 files and 658 tests passed; `tests/agents.test.ts`,
 over HTTP with a stand-in for Meta). The headsets' Connect your agent is Robin's pick of four mockups that day,
 "D, the inbox card", "and then C too" ([The headsets](#the-headsets-built-2026-11-20), below): built for Quest and
-Android XR and compiled, and written for the Vision Pro and type-checked, but **seen on no headset**. **Nothing is
-deployed or released**, so until both are, a code can be asked for only over HTTP with a device's token (Trying it,
-below). Nothing here has run on a headset or on the live receiver.
+Android XR and compiled, and written for the Vision Pro and type-checked, but **seen on no headset**. **The
+receiver's side is live on capture.polydance.net since 2026-11-20 12:03 UTC**
+([HOSTED.md](HOSTED.md#agents-people-connect-themselves)); **the headsets' side is in no release**, so until one, a
+code can be asked for only over HTTP with a device's token (Trying it, below). Nothing here has run on a headset,
+and on the live receiver no code has been asked for or redeemed.
 
 Why: an audit on 2026-11-19 found that someone whose headset app works cannot connect their own coding agent
 without Robin doing three things by hand. A signed-in headset's token is `upload` only, so it cannot sync a
@@ -787,8 +789,8 @@ nothing it lacked: it could already make a project with any hosts it liked. Keys
 
 **What the person does, in order.**
 
-1. On the computer: install `polycap` ([AGENT-SETUP.md](AGENT-SETUP.md), step 1). This still needs the
-   repository, which is not public; that is its own piece of work (`private/docs/BUSINESS.md`, Decisions).
+1. On the computer: install `polycap` ([AGENT-SETUP.md](AGENT-SETUP.md), step 1), from the repository, which is
+   public at github.com/Polydance/polydance since 2026-11-20.
 2. In the headset: press **Connect your agent** on the card at the top of the inbox, or in the Welcome's answer,
    or open the menu and choose **Agents**. It shows the code, the line to type, and how long the code lasts.
 3. On the computer: `polycap connect K7QF-2MXD`. It says who it is connected as and when the token expires, and

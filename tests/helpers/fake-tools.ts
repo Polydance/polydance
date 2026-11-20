@@ -8,6 +8,9 @@ const FAKE_ADB = `#!/bin/sh
 # Fake adb: the "device" folder /sdcard/Oculus/VideoShots maps to $FAKE_REMOTE_DIR.
 set -e
 if [ "$1" = "-s" ]; then shift 2; fi
+# Size and mtime as the headset's toybox stat reports them; GNU stat (Linux, CI) and BSD stat (macOS) differ.
+size() { wc -c < "$1" | tr -d ' '; }
+mtime() { stat -c %Y "$1" 2>/dev/null || stat -f %m "$1"; }
 cmd="$1"; shift
 case "$cmd" in
   version) echo "Android Debug Bridge version 0.0.0-fake" ;;
@@ -22,7 +25,7 @@ case "$cmd" in
       stat*)
         for f in "$FAKE_REMOTE_DIR"/*.mp4; do
           [ -e "$f" ] || continue
-          printf '%s %s /sdcard/Oculus/VideoShots/%s\\n' "$(stat -f %z "$f")" "$(stat -f %m "$f")" "$(basename "$f")"
+          printf '%s %s /sdcard/Oculus/VideoShots/%s\\n' "$(size "$f")" "$(mtime "$f")" "$(basename "$f")"
         done ;;
       sha256sum*)
         p="\${line#sha256sum }"; p="\${p#\\'}"; p="\${p%\\'}"
